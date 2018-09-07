@@ -9,9 +9,11 @@
             <h1>Simple Servlet<br><small>Enter Search below:</small></h1>
     
             <form action="simple" method="post">
-                <label for="message">Search: </label>
-                <input name="message" id="message" />
-                <button type="submit" name="submit" id="submit" value="submit">Submit</button>
+                <div class="form-group">
+                    <label for="message">Search: </label>
+                    <input name="message" id="message" />
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
         <!-- Latest compiled and minified JavaScript -->
