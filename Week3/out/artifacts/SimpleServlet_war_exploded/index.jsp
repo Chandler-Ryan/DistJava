@@ -5,15 +5,28 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
     <body>
-        <div class="col-sm-offset-3 col-sm-6">
+        <div class="col-sm-offset-4 col-sm-4">
             <h1>Simple Servlet<br><small>Enter Search below:</small></h1>
     
-            <form action="simple" method="post">
+            <form action="simple" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label for="searchType">Type of Search:</label>
+                    <select name="searchType" id="searchType" class="form-control">
+                        <option value="ACCTNUM">Account Number</option>
+                        <option value="LNAME">Last Name</option>
+                        <option value="FNAME">First Name</option>
+                        <option value="EMAIL">Email</option>
+                        <option value="IPADDR">IP Address</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="message">Search: </label>
-                    <input name="message" id="message" />
+                    <input name="message" id="message" class="form-control" />
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <div class="col-sm-offset-4 col-sm-4">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+
             </form>
         </div>
         <!-- Latest compiled and minified JavaScript -->

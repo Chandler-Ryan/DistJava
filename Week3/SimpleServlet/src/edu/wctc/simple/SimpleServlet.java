@@ -16,22 +16,21 @@ public class SimpleServlet extends HttpServlet {
 
         ArrayList<Individual> result2;
 
-        result2 = theStudents2.findStudents(FindColumns.ACCTNUM, request.getParameter("message"));
+        result2 = theStudents2.findStudents(FindColumns.valueOf(request.getParameter("searchType")), request.getParameter("message"));
         PrintWriter out = response.getWriter();
-        out.println("<html><head></head><body><h1>Search results:</h1><p>");
+        out.println("<html><head>\n" +
+                "        <!-- Latest compiled and minified CSS -->\n" +
+                "        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" \n" +
+                "        integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n" +
+                "    </head><body><div class=\"container\"><h1>Search results:</h1><table class=\"table table-hover table-striped\">");
+        out.println("<tr><th>Account Number</th><th>First Name</th><th>Last Name</th><th>Email</th><th>IP Address</th></tr>");
         for (Individual i: result2) {
 
-            out.println(i.getAccountNumber() + " " + i.getFname() + " " + i.getLname()+"<br>");
+            out.println("<tr><td>"+i.getAccountNumber() + "</td><td>" + i.getFname() + "</td><td>" + i.getLname()+
+                    "</td><td>" + i.getEmail()+ "</td><td>" + i.getIpAddress()+"</td></tr>");
         }
 
-
-
-        result2 = theStudents2.findStudents(FindColumns.LNAME, request.getParameter("message"));
-
-        for (Individual i: result2) {
-            out.println(i.getAccountNumber() + " " + i.getFname() + " " + i.getLname()+"<br>");
-        }
-        out.println("</p></body></html>");
+        out.println("</table></div></body></html>");
 
 
     }
