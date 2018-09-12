@@ -11,3 +11,7 @@ This repository is for my Distributed Java Class
     * Accidentally commit my repo to the class repo.
     * Reverted change and correctly reset my push to this repo.
 ### Week 4
+  * Updated the lab from last week to support searching on all columns
+  * Added some page styling
+  ### Project4
+    * Updated the output to show multiple comic types in the second section.
