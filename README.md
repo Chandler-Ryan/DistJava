@@ -11,7 +11,10 @@ This repository is for my Distributed Java Class
     * Accidentally commit my repo to the class repo.
     * Reverted change and correctly reset my push to this repo.
 ### Week 4
-  * Updated the lab from last week to support searching on all columns
-  * Added some page styling
-  ### Project4
-    * Updated the output to show multiple comic types in the second section.
+* Corrected Issue keeping the project from routing jsp pages.
+* Now working having index.jsp send the form action to answer.jsp to output the results
+### Project4
+* Updated the lab from last week to support searching on all columns
+* Added some page styling
+### Week4ClassLab
+  * Updated the output to show multiple comic types in the second section.
