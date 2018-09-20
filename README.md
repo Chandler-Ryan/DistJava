@@ -18,3 +18,5 @@ This repository is for my Distributed Java Class
 * Added some page styling
 ### Week4ClassLab
   * Updated the output to show multiple comic types in the second section.
+### Week 5 9/19/18
+  * Week 5 is the shopping cart from the Beer app MVC refactored into Store.
