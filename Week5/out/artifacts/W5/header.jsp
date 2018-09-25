@@ -17,7 +17,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Home</a>
+            <a class="navbar-brand" href="index.jsp">Home</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,7 +27,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="productList.jsp">Product List</a></li>
-                        <li><a href="productDetail.html">Product Detail</a></li>
+                        <li><a href="productDetail.jsp">Product Detail</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Separated link</a></li>
@@ -47,12 +47,12 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
+                <li><a href="viewCart.jsp">Shopping Cart</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Auth and Profile <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Subscriptions</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Separated link</a></li>

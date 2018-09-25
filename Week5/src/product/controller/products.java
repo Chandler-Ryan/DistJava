@@ -19,7 +19,7 @@ public class products extends HttpServlet{
      * @author    Just wingging it
      * @version   1.00
      */
-        private static final String RESULT_PAGE = "viewCart.jsp";//"result.jsp";
+        private static final String RESULT_PAGE = "viewCart.jsp";
 
         // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
         /**
@@ -49,7 +49,7 @@ public class products extends HttpServlet{
 
             Enumeration<String> names = request.getParameterNames();
 
-            List<product> result = new ArrayList<>(); //be.getBrands(c.trim());
+            List<product> result = new ArrayList<>();
             int productCount = 0;
             while (names.hasMoreElements()){
                 productCount++;
