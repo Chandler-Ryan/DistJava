@@ -1,6 +1,6 @@
-package product.controller;
+package Product.Controller;
 
-import product.model.product;
+import Product.Model.Product;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
 
-public class products extends HttpServlet{
+import static java.lang.Integer.parseInt;
+
+public class Products extends HttpServlet {
     /**
      * This is the main controller for the Store App
      *
@@ -47,41 +47,28 @@ public class products extends HttpServlet{
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
             response.setContentType("text/html");
+            ArrayList<Product>ProductList = new ArrayList<Product>();
+            ProductList.add(new Product(1, "Cool Product 1", 0.99 ));
+            ProductList.add(new Product(2, "Cool Product 2", 9.99));
+            ProductList.add(new Product(3, "Cool Product 3", 99.99));
 
-            Enumeration<String> names = request.getParameterNames();
-
-            List<product> result = new ArrayList<>();
-            int productCount = 0;
-            while (names.hasMoreElements()){
-                productCount++;
-                names.nextElement();
+            String productID = request.getParameter("id");
+            int quantity = 0;
+            try
+            {
+                quantity = parseInt(request.getParameter("qty"+productID));
+                if (quantity > 0)
+                {
+                    Cookie cookie = new Cookie(productID, Integer.toString(quantity));
+                    cookie.setMaxAge(60*60*24);
+                    response.addCookie(cookie);
+                }
             }
-            //while(names.hasMoreElements()) {
-             //   result.add(names.nextElement());
-            //}
-            Cookie cookie = new Cookie("Cart", "");
-            for(int i = 1; i < (productCount/4) + 1; i++){
-             product item = new product(
-                        Integer.parseInt(request.getParameter("id" + i)),
-                        request.getParameter("name" + i),
-                        Double.parseDouble(request.getParameter("price" + i))
-                );
-             if (request.getParameter("qty" + i) != null){
-                 if (isInteger(request.getParameter("qty" + i))){
-                     item.setQuantity(Integer.parseInt(request.getParameter("qty" + i)));
-                 }else{
-                     item.setQuantity(0);
-                 }
+            catch (Exception e)
+            {
 
-             }
-                result.add(item);
             }
-// TODO set viewCart to a jsp and adjust routing to match
-            // Parameters are read only Request object properties, but attributes
-            // are read/write. We can use attributes to store data for use on
-            // another page.
-            request.setAttribute("products", result);
-
+            request.setAttribute("Catalog", ProductList);
             // This object lets you forward both the request and response
             // objects to a destination page
             RequestDispatcher view =
@@ -96,32 +83,6 @@ public class products extends HttpServlet{
          */
         @Override
         public String getServletInfo() {
-            return "Main Controller";
+            return "Main Product.Controller";
         }// </editor-fold>
-
-    private static boolean isInteger(String str) {
-        if (str == null) {
-            return false;
-        }
-        if (str.isEmpty()) {
-            return false;
-        }
-        int i = 0;
-        if (str.charAt(0) == '-') {
-            if (str.length() == 1) {
-                return false;
-            }
-            i = 1;
-        }
-        for (; i < str.length(); i++) {
-            char c = str.charAt(i);
-            if (c < '0' || c > '9') {
-                return false;
-            }
-        }
-        return true;
-        }
-
     }
-
-

@@ -17,6 +17,7 @@
         <div class="row">
             <%
                 List<product> items = (List)request.getAttribute("products");
+                if (!items.isEmpty()){
                 for(product item : items)
                 {%>
                   <div class="col-md-4">
@@ -31,7 +32,7 @@
                           </div>
                       </div>
                   </div>
-                <%}%>
+                <%}}%>
 
         </div><!-- End Row -->
     </div><!-- End Container -->
