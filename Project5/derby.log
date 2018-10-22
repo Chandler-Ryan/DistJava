@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Oct 22 18:34:23 CDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instance a816c00e-0166-9e21-1f43-00000e6dff40 
+on database directory D:\CodeRepos\DJavaNotRepo\Project5DB\CoolProductsDB with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/C:/javaeesdk8/glassfish5/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_181-b13
+user.dir=D:\CodeRepos\DJavaNotRepo\Project5DB
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

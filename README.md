@@ -23,3 +23,5 @@ This repository is for my Distributed Java Class
   * Week 5 is the shopping cart from the Beer app MVC refactored into Store.
 ### Project 4
 * This will be Project 5 internally but is for the project 4 assignment.
+### Project 5
+* This is my console program with Full CRUD Support implementing DAO
