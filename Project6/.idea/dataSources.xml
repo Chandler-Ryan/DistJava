@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="ProductDB" uuid="71b3741c-5b3d-4438-a101-ff1e0d1b23e6">
+      <driver-ref>derby.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
+      <jdbc-url>jdbc:derby:D:\CodeRepos\DJavaNotRepo\Project6\ProductDB;create=true</jdbc-url>
+    </data-source>
+  </component>
+</project>

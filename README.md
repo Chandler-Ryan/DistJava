@@ -25,3 +25,5 @@ This repository is for my Distributed Java Class
 * This will be Project 5 internally but is for the project 4 assignment.
 ### Project 5
 * This is my console program with Full CRUD Support implementing DAO
+### Project 6
+* This project is the combination of projects 4 and 5. I was able to get the DB to connect but I was unable to iterate the list of Products retrieved from the database. Uknown why would always throw a null pointer in the for loop in productList.jsp
