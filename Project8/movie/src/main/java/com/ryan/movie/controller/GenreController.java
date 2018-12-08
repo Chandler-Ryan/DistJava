@@ -16,32 +16,34 @@ public class GenreController {
     private static Log log = LogFactory.getLog(GenreController.class);
 
     @RequestMapping("/genre")
-    public List<movieGenre> getThanks() {
+    public List<movieGenre> getAll() {
         return genreService.getAllGenres();
     }
 
     @RequestMapping("/genre/{id}")
-    public movieGenre getTeam(@PathVariable String id) {
+    public movieGenre getOne(@PathVariable String id) {
         return genreService.getGenre(id);
     }
 
     @RequestMapping(method=RequestMethod.POST, value="/genre")
-    public void addTeam(@RequestBody movieGenre genre) {
+    public void addGenre(@RequestBody movieGenre genre) {
         genreService.addGenre(genre);
         log.info("Adding Genre: "+ genre.getGenreName() );
     }
 
-
     @RequestMapping(method=RequestMethod.PUT, value="/genre/{id}")
-    public void updateTeam(@RequestBody movieGenre genre, @PathVariable String id) {
+    public void updateGenre(@RequestBody movieGenre genre, @PathVariable String id) {
         genreService.updateGenre(genre,id);
         log.info("Updating Genre: "+ genre.getGenreName() );
     }
 
     @RequestMapping(method=RequestMethod.DELETE, value="/genre/{id}")
-    public void deleteTeam(@PathVariable String id) {
+    public void deleteGenre(@PathVariable String id) {
         genreService.deleteTeam(id);
         log.info("Deleting Genre: "+ id );
     }
+
+    @RequestMapping("/csrf")
+    public String token(){ return "{\"token\":\"fjsldfjsa\"}";}
 
 }

@@ -10,10 +10,6 @@
     <title>Genres</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,7 +26,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" role="tablist">
                 <li class="active" role="presentation"><a href="#getAll" ara-controls="getAll" role="tab" data-toggle="tab" id="listAllNav">List All</a></li>
-                <li role="presentation"><a href="#get1" role="tab" ara-controls="get1" data-toggle="tab">Get 1</a></li>
+                <li role="presentation"><a href="#get1" role="tab" ara-controls="get1" data-toggle="tab" id="get1Nav">Get 1</a></li>
                 <li role="presentation"><a href="#add" role="tab" ara-controls="add" data-toggle="tab">Add</a></li>
                 <li role="presentation"><a href="#update" role="tab" ara-controls="update" data-toggle="tab" id="updateNav">Update</a></li>
                 <li role="presentation"><a href="#Delete" role="tab" ara-controls="Delete" data-toggle="tab" id="deleteNav">Delete</a></li>
@@ -125,153 +121,10 @@
         </div><!--end tab content-->
 
 </div><!--end .container -->
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    //-------------- get all Ajax --------------------------------------------
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var myObj = JSON.parse(this.responseText);
-            var content = "<table class=\"table table-striped\">";
-            for (var property in myObj) {
-                if (myObj.hasOwnProperty(property)) {
-                    content += "<tr><td>" + myObj[property].genreName + "</td><td>" + myObj[property].rating +
-                        "</td></tr>";
-                }
-            }
-            content += "</table>"
-            document.getElementById("stuff").innerHTML = content;
-        }
-    };
-    xmlhttp.open("GET", "/genre", true);
-    xmlhttp.send();
-
-    //-------------- List All NavBar click to refresh list ---------------------
-    $('#listAllNav').click(function(){
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                var content = "<table class=\"table table-striped\">";
-                for (var property in myObj) {
-                    if (myObj.hasOwnProperty(property)) {
-                        content += "<tr><td>" + myObj[property].genreName + "</td><td>" + myObj[property].rating +
-                            "</td></tr>";
-                    }
-                }
-                content += "</table>"
-                document.getElementById("stuff").innerHTML = content;
-            }
-        };
-        xmlhttp.open("GET", "/genre", true);
-        xmlhttp.send();
-    });
-    //--------------- get one Ajax ----------------------------------------------
-    var xmlhttp2 = new XMLHttpRequest();
-    document.getElementById('getByIdSubmit').onclick = xmlhttp2;
-
-    $(document).ready(function(){
-        $('#getByIdSubmit').click(function(){
-            xmlhttp2.onreadystatechange = function() {
-
-                if (this.readyState == 4 && this.status == 200) {
-                    var myObj = JSON.parse(this.responseText);
-                    var content = "<table class=\"table table-striped\">";
-                    content += "<tr><td>" + myObj.genreName + "</td><td>" + myObj.rating +
-                        "</td></tr>";
-                    content += "</table>"
-                    document.getElementById("DisplayGenre").innerHTML = content;
-                }
-            };
-            xmlhttp2.open("GET", "/genre/"+$('#search').val(), true);
-            xmlhttp2.send();
-        });
-    });
-
-    //------------------------------ Add Genre AJAX ------------------------------------------
-    $( "#addGenre" ).click(function() {
-        var finishedMessage="{";
-        var message = $( '#theGenre' ).serializeArray();
-        $.each(message,function (i,field) {
-            finishedMessage+="\"" + field.name + "\":\"" + field.value + "\",";
-        });
-        finishedMessage = finishedMessage.substring(0,finishedMessage.length - 1) + "}";
-        var oReq = new XMLHttpRequest();
-        oReq.open("POST", "/genre");
-        oReq.setRequestHeader("Content-Type", "application/json");
-        oReq.send(finishedMessage);
-        console.log(finishedMessage);
-    });
-    //---------onclick update Navbar link ---------------
-    $('#updateNav').click(function(){
-        var ajaz = new XMLHttpRequest();
-        ajaz.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                var content = "<select class=\"form-control\" id=\"selected4Update\">";
-                for (var property in myObj) {
-                    if (myObj.hasOwnProperty(property)) {
-                        content += "<option value=\"" + myObj[property].genreName + "\">" + myObj[property].genreName +"</option>";
-                    }
-                }
-                content += "</select>";
-                document.getElementById("updateSelect").innerHTML = content;
-            }
-        };
-        ajaz.open("GET", "/genre", true);
-        ajaz.send();
-    });
-    //-------------------Update AJAX ---------------------------------------------------------
-    $( "#updateGenreButton" ).on("click" ,function( event ) {
-        var finishedMessage="{";
-        var message = $( "#updateGenre" ).serializeArray();
-        $.each(message,function (i,field) {
-            finishedMessage+="\"" + field.name + "\":\"" + field.value + "\",";
-        });
-        finishedMessage =finishedMessage.substring(0,finishedMessage.length - 1) + "}";
-        var oReq = new XMLHttpRequest();
-        oReq.open("PUT", "/genre/"+ $( "#selected4Update" ).val());
-        oReq.setRequestHeader("Content-Type", "application/json");
-        oReq.send(finishedMessage);
-        console.log(finishedMessage);
-    });
-    //---------------------Delete AJAX -----------------------------------------------------
-    $( "#deleteTeam" ).on("click" ,function( event ) {
-        var name = $( "#selected4Delete" ).val();
-        var oReq = new XMLHttpRequest();
-        oReq.open("DELETE", "/genre/"+ name);
-        oReq.setRequestHeader("Content-Type", "application/json");
-        oReq.send();
-    });
-    //---------onclick Delete Navbar link ---------------
-    $('#deleteNav').click(function(){
-        $('#deleteResult').html('');
-        $('#dTeam').show();
-        var ajaz = new XMLHttpRequest();
-        ajaz.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-                var content = "<select class=\"form-control\" id=\"selected4Delete\">";
-                for (var property in myObj) {
-                    if (myObj.hasOwnProperty(property)) {
-                        content += "<option value=\"" + myObj[property].genreName + "\">" + myObj[property].genreName +"</option>";
-                    }
-                }
-                content += "</select>";
-                document.getElementById("deleteSelect").innerHTML = content;
-            }
-        };
-        ajaz.open("GET", "/genre", true);
-        ajaz.send();
-    });
-//---------------Delete genre button click -----------------------
-    $('#deleteTeam').click(function(){
-        $('#dTeam').hide();
-        $('#deleteResult').html('Your Genre has been deleted.');
-    });
-
-</script>
+<script type="text/javascript" src="js/site.js"></script>
 </body>
 </html>

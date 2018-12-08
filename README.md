@@ -29,3 +29,4 @@ This repository is for my Distributed Java Class
 * This project is the combination of projects 4 and 5. I was able to get the DB to connect but I was unable to iterate the list of Products retrieved from the database. Uknown why would always throw a null pointer in the for loop in productList.jsp
 ### Project 8
 * This is my spring boot movie genre CRUD/RESTful API with logging, custom errors, and Swagger UI
+* Rebuilt a lot of the javascript to make the SPA consuming the API a *little* easier to use.
