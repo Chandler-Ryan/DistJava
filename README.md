@@ -30,3 +30,6 @@ This repository is for my Distributed Java Class
 ### Project 8
 * This is my spring boot movie genre CRUD/RESTful API with logging, custom errors, and Swagger UI
 * Rebuilt a lot of the javascript to make the SPA consuming the API a *little* easier to use.
+### Project 8.1
+* This is the spring boot movie genre Restful API with logging, custom errors and Swagger2 docs & UI
+  * This update adds JPA to ORM the genre class to a Darby genre table.
